@@ -50,13 +50,34 @@ Insert your raw and cleaned table screenshots below.
 Replace image filenames with your actual uploaded image names.
 
 ---
+## Results
+
+- Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.  
+- Key metrics, trends, and patterns can now be extracted from the cleaned dataset.  
+- Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
+
+---
+
+## Key Fixes & Learning
+
+- Corrected AI2SQL-generated SQL to match **PostgreSQL** syntax (e.g., using `DELETE USING` for de-duplication).  
+- Added robustness to cleaning steps:  
+  - Null checks  
+  - Text normalization  
+  - Type consistency  
+  - Outlier handling  
+- Applied PostgreSQL text functions for standardization (e.g., `INITCAP`, `UPPER`, `TRIM`).  
+- Documented each step for reproducibility and clarity.  
+- Ensured all cleaning logic is idempotent and reusable.
+
+---
 
 ## Step-by-Step Data Cleaning
 
 All table/column names use underscores and lowercase. Adjust only if your schema uses different names.
-
-### **1. Remove Nulls & Empty Required Fields**
 ```sql
+1. Remove Nulls & Empty Required Fields
+
 DELETE FROM healthcaredata
 WHERE TRIM(COALESCE("Name", '')) = ''
    OR "Age" IS NULL
@@ -138,23 +159,3 @@ SET "Name" = INITCAP(TRIM("Name")),
     "Test Results" = INITCAP(TRIM("Test Results"));
 
 ---
-
-## Results
-
-- Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.  
-- Key metrics, trends, and patterns can now be extracted from the cleaned dataset.  
-- Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
-
----
-
-## Key Fixes & Learning
-
-- Corrected AI2SQL-generated SQL to match **PostgreSQL** syntax (e.g., using `DELETE USING` for de-duplication).  
-- Added robustness to cleaning steps:  
-  - Null checks  
-  - Text normalization  
-  - Type consistency  
-  - Outlier handling  
-- Applied PostgreSQL text functions for standardization (e.g., `INITCAP`, `UPPER`, `TRIM`).  
-- Documented each step for reproducibility and clarity.  
-- Ensured all cleaning logic is idempotent and reusable.
