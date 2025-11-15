@@ -73,6 +73,8 @@ WHERE TRIM(COALESCE("Name", '')) = ''
    OR TRIM(COALESCE("Medication", '')) = ''
    OR TRIM(COALESCE("Test Results", '')) = '';
 
+---
+
 2. Remove Exact Duplicates
 DELETE FROM healthcaredata a
 USING healthcaredata b
@@ -92,11 +94,15 @@ WHERE a.ctid <> b.ctid
   AND COALESCE(a."Medication", '') = COALESCE(b."Medication", '')
   AND COALESCE(a."Test Results", '') = COALESCE(b."Test Results", '');
 
+---
+
   3. Remove Outliers & Logic Errors
 DELETE FROM healthcaredata
 WHERE "Age" < 0 OR "Age" > 120
    OR ("Billing Amount" IS NOT NULL AND "Billing Amount" < 0)
    OR ("Date of Admission" > "Discharge Date");
+
+---
 
 4. Standardize Gender
 UPDATE healthcaredata
@@ -106,6 +112,8 @@ SET "Gender" = CASE
   ELSE 'Other'
 END
 WHERE "Gender" IS NOT NULL;
+
+---
 
 5. Normalize Blood Type
 UPDATE healthcaredata
@@ -117,6 +125,8 @@ SET "Blood Type" = NULL
 WHERE "Blood Type" NOT IN ('A', 'A-', 'B', 'B-', 'AB', 'AB-', 'O', 'O-')
    OR "Blood Type" IS NULL;
 
+---
+
 6. Title Case for Text Columns
 UPDATE healthcaredata
 SET "Name" = INITCAP(TRIM("Name")),
@@ -127,35 +137,24 @@ SET "Name" = INITCAP(TRIM("Name")),
     "Medication" = INITCAP(TRIM("Medication")),
     "Test Results" = INITCAP(TRIM("Test Results"));
 
-Trend Analysis Queries (AI2SQL)
+---
 
-After cleaning, use AI2SQL natural language prompts to generate queries such as:
+## Results
 
-"Show average billing amount by hospital and gender"
+- Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.  
+- Key metrics, trends, and patterns can now be extracted from the cleaned dataset.  
+- Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
 
-"List top 5 most common medical conditions"
+---
 
-"Show admission trends over time by condition"
+## Key Fixes & Learning
 
-"Find patients with abnormal test results by hospital"
-
-Paste screenshots of output for these queries below.
-
-Results
-
-Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.
-
-Key metrics, trends, and patterns are now extractable from the cleaned set.
-
-Screenshots attached show transformation steps and final reporting outputs.
-
-Key Fixes & Learning
-
-Corrected AI2SQL prompt syntax for PostgreSQL (e.g., applying DELETE USING for de-duplication).
-
-Improved robustness: null checks, data type conversions, title-case transformations.
-
-Scripted each step for reusability and transparency.
-
-Used native PostgreSQL functions for cleaning and text normalization.
-
+- Corrected AI2SQL-generated SQL to match **PostgreSQL** syntax (e.g., using `DELETE USING` for de-duplication).  
+- Added robustness to cleaning steps:  
+  - Null checks  
+  - Text normalization  
+  - Type consistency  
+  - Outlier handling  
+- Applied PostgreSQL text functions for standardization (e.g., `INITCAP`, `UPPER`, `TRIM`).  
+- Documented each step for reproducibility and clarity.  
+- Ensured all cleaning logic is idempotent and reusable.
