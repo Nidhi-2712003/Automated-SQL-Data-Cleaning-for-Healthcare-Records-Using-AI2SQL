@@ -211,5 +211,8 @@ SET "Name" = INITCAP(TRIM("Name")),
 ---
 
 ## 🪄 Connect with Me
-- 💼 [LinkedIn](https://www.linkedin.
 
+- 💼 [LinkedIn](https://www.linkedin.com/in/d-nidhi-sree-998a6037a/) 
+- 📧 Email: domarajunidhi@gmail.com
+
+---
