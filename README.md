@@ -1,23 +1,10 @@
-# 🚑 Healthcare Data Cleaning & Automation Project (AI2SQL)
+# Healthcare Data Cleaning & Automation Project (AI2SQL)
 
 ## Project Title
 **Automated SQL Data Cleaning for Healthcare Records Using AI2SQL**
 
 ## Project Description
-This project demonstrates a complete SQL automation workflow for cleaning, standardizing, and analyzing synthetic healthcare data using the AI2SQL tool with PostgreSQL. The project showcases best practices in healthcare data engineering — including raw table import, iterative cleaning, fixing AI2SQL prompt syntax issues, and exploring trends/patterns in the cleaned dataset. All steps are explained for reproducibility and learning, and the code is ready to use for similar data automation tasks.
-
----
-
-## Table of Contents
-- Introduction  
-- Data Source  
-- Project Workflow  
-- Screenshots  
-- Step-by-Step Data Cleaning  
-- Trend Analysis Queries (AI2SQL)  
-- Results  
-- Key Fixes & Learning  
-- How to Reproduce  
+This project demonstrates a complete SQL automation workflow for cleaning, standardizing, and analyzing synthetic healthcare data using the AI2SQL tool with PostgreSQL. The project showcases best practices in healthcare data engineering — including raw table import, iterative cleaning, fixing AI2SQL prompt syntax issues, and exploring trends/patterns in the cleaned dataset. All steps are explained for reproducibility and learning, and the code is ready to use for similar data automation tasks.  
 
 ---
 
@@ -27,38 +14,28 @@ Healthcare datasets often contain duplicates, messy text, outlier records, and m
 ---
 
 ## Data Source
-- **File:** `healthcare.csv`  
-- **Origin:** imranbdcse/healthcaredatasets  
-- **Domain:** Synthetic patient EHR, including demographics, diagnosis, billing, hospital details, and test results.
+
+**File:** `healthcare_dataset.csv`  
+**Source:** Publicly available on GitHub  
+**Original Repository:** https://github.com/imranbdcse/healthcaredatasets (DataScience branch)
+
+This dataset contains **synthetic healthcare records** (demographics, diagnoses, hospital details, billing, and test results) created for learning, research, and demonstration purposes. It does **not** contain real patient information.
+
+The dataset is used here **solely for educational, analytical, and non-commercial purposes** as part of an AI2SQL and data-cleaning demonstration project. No ownership of the dataset is claimed. If you are the original creator or copyright holder and wish this dataset reference to be modified or removed, please open an issue in this repository, and the request will be addressed promptly.
 
 ---
 
 ## Project Workflow
 - Import CSV data into PostgreSQL using pgAdmin or CLI.  
-- Inspect and visualize the raw table structure and sample records.  
-- Apply sequential cleaning queries in AI2SQL (each adapted for robust PostgreSQL syntax).  
-- Document cleaning steps and results, including screenshots.  
-- Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data.  
-- Share final output and insights.
+<img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/b1fb84ba-b343-407e-8f4c-b7076b406b11" />
+- Inspect and visualize the raw table structure and sample records. 
+<img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/3e634dd6-5c87-4b21-a64d-9ed004744690" />
+- Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data and Apply sequential cleaning queries in AI2SQL (each adapted for robust PostgreSQL syntax). 
+<img width="925" height="501" alt="image" src="https://github.com/user-attachments/assets/022392d8-ea95-4203-abde-8e03713f4865" />
+<img width="935" height="466" alt="image" src="https://github.com/user-attachments/assets/aa99834f-1cb0-4824-b39a-541cb9bba372" />
+<img width="932" height="473" alt="image" src="https://github.com/user-attachments/assets/4b20e33e-17d2-442e-86cd-d690eb81eef7" />
 
----
-
-## Screenshots
-Insert your raw and cleaned table screenshots below.
-
-
-Replace image filenames with your actual uploaded image names.
-
----
-## Results
-
-- Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.  
-- Key metrics, trends, and patterns can now be extracted from the cleaned dataset.  
-- Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
-
----
-
-## Key Fixes & Learning
+## Key Fixes & Learning (Since query suggested by AI2SQL has syntax issues)
 
 - Corrected AI2SQL-generated SQL to match **PostgreSQL** syntax (e.g., using `DELETE USING` for de-duplication).  
 - Added robustness to cleaning steps:  
@@ -70,12 +47,10 @@ Replace image filenames with your actual uploaded image names.
 - Documented each step for reproducibility and clarity.  
 - Ensured all cleaning logic is idempotent and reusable.
 
----
+## Step-by-Step Data Cleaning in Postgree SQL
 
-## Step-by-Step Data Cleaning
-
-All table/column names use underscores and lowercase. Adjust only if your schema uses different names.
 ```sql
+
 1. Remove Nulls & Empty Required Fields
 
 DELETE FROM healthcaredata
@@ -157,5 +132,28 @@ SET "Name" = INITCAP(TRIM("Name")),
     "Admission Type" = INITCAP(TRIM("Admission Type")),
     "Medication" = INITCAP(TRIM("Medication")),
     "Test Results" = INITCAP(TRIM("Test Results"));
+
+---
+```
+---
+
+## Cleaned file
+
+[Healthcare_dataset_AI2SQL.xlsx](https://github.com/user-attachments/files/23561228/Healthcare_dataset_AI2SQL.xlsx)
+
+---
+
+## Final Steps
+
+- Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data. 
+<img width="922" height="471" alt="image" src="https://github.com/user-attachments/assets/8a877cb8-ef15-40d1-ba4b-f49cfc82cdea" />
+<img width="940" height="470" alt="image" src="https://github.com/user-attachments/assets/2159e25f-22d5-42c6-a622-3f741adeeae1" />
+<img width="926" height="469" alt="image" src="https://github.com/user-attachments/assets/c3fdb240-8a15-482a-83c2-48b18e96a708" />
+
+## Results
+
+- Data was successfully cleaned, deduplicated, and normalized using SQL generated and corrected through AI2SQL.  
+- Key metrics, trends, and patterns can now be extracted from the cleaned dataset.  
+- Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
 
 ---
