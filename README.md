@@ -26,23 +26,32 @@ The dataset is used here **solely for educational, analytical, and non-commercia
 ---
 
 ## Project Workflow
+
 - Import CSV data into PostgreSQL using pgAdmin or CLI.  
 
+
 <img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/b1fb84ba-b343-407e-8f4c-b7076b406b11" />
+
 
 - Inspect and visualize the raw table structure and sample records. 
 
 <img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/3e634dd6-5c87-4b21-a64d-9ed004744690" />
 
+
 - Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data and Apply sequential cleaning queries in AI2SQL (each adapted for robust PostgreSQL syntax). 
+
 
 <img width="925" height="501" alt="image" src="https://github.com/user-attachments/assets/022392d8-ea95-4203-abde-8e03713f4865" />
 
+
 <img width="935" height="466" alt="image" src="https://github.com/user-attachments/assets/aa99834f-1cb0-4824-b39a-541cb9bba372" />
+
 
 <img width="932" height="473" alt="image" src="https://github.com/user-attachments/assets/4b20e33e-17d2-442e-86cd-d690eb81eef7" />
 
+
 ## Key Fixes & Learning (Since query suggested by AI2SQL has syntax issues)
+
 
 - Corrected AI2SQL-generated SQL to match **PostgreSQL** syntax (e.g., using `DELETE USING` for de-duplication).  
 - Added robustness to cleaning steps:  
@@ -152,13 +161,18 @@ SET "Name" = INITCAP(TRIM("Name")),
 
 ## Final Steps
 
+
 - Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data. 
+
 
 <img width="922" height="471" alt="image" src="https://github.com/user-attachments/assets/8a877cb8-ef15-40d1-ba4b-f49cfc82cdea" />
 
+
 <img width="940" height="470" alt="image" src="https://github.com/user-attachments/assets/2159e25f-22d5-42c6-a622-3f741adeeae1" />
 
+
 <img width="926" height="469" alt="image" src="https://github.com/user-attachments/assets/c3fdb240-8a15-482a-83c2-48b18e96a708" />
+
 
 ## Results
 
