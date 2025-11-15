@@ -25,18 +25,23 @@ The dataset is used here **solely for educational, analytical, and non-commercia
 
 ---
 
+
 ## Project Workflow
+
 
 - Import CSV data into PostgreSQL using pgAdmin or CLI.  
 
 
-<img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/b1fb84ba-b343-407e-8f4c-b7076b406b11" />
+![Screenshot Name](https://github.com/user-attachments/assets/0f8ed26c-1712-4bbf-bc7d-d290ca0cfad5)
+
 
 ---
 
 - Inspect and visualize the raw table structure and sample records. 
 
-<img width="940" height="588" alt="image" src="https://github.com/user-attachments/assets/3e634dd6-5c87-4b21-a64d-9ed004744690" />
+
+![Screenshot Name](https://github.com/user-attachments/assets/766d550a-c6f7-490f-a0bb-52f0e584d52a)
+
 
 ---
 
@@ -44,22 +49,25 @@ The dataset is used here **solely for educational, analytical, and non-commercia
 
 
 
-![Screenshot Name](https://github.com/user-attachments/assets/4d327ff1-4e14-4e59-8a72-98ec74e807e7)
+![Screenshot Name](https://github.com/user-attachments/assets/d101958b-b761-4126-8832-475f5ef080af)
 
 
 ---
 
 
-![Screenshot Name](https://github.com/user-attachments/assets/86f321e2-6b0e-4c01-98a9-042a6b75b14a)
+![Screenshot Name](https://github.com/user-attachments/assets/d2b9a6a8-8769-4d7e-a407-b6c368d4b695)
+
+
+
+---
+
+
+![Query Screenshot](https://github.com/user-attachments/assets/496d7d7d-083a-4f82-adc4-72bcbdeb1a7f)
+
 
 
 ---
 
-
-![Query Screenshot](https://github.com/user-attachments/assets/e90884e1-16d3-4d21-bf4a-b0ff3b2c93ee)
-
-
----
 
 ## Key Fixes & Learning (Since query suggested by AI2SQL has syntax issues)
 
@@ -73,6 +81,7 @@ The dataset is used here **solely for educational, analytical, and non-commercia
 - Applied PostgreSQL text functions for standardization (e.g., `INITCAP`, `UPPER`, `TRIM`).  
 - Documented each step for reproducibility and clarity.  
 - Ensured all cleaning logic is idempotent and reusable.
+
 
 ## Step-by-Step Data Cleaning in Postgree SQL
 
