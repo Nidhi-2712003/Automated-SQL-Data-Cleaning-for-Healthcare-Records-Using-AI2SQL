@@ -173,13 +173,22 @@ SET "Name" = INITCAP(TRIM("Name")),
 - Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data. 
 
 
-<img width="922" height="471" alt="image" src="https://github.com/user-attachments/assets/8a877cb8-ef15-40d1-ba4b-f49cfc82cdea" />
+![Query Screenshot](https://github.com/user-attachments/assets/9106037d-3504-45cc-8561-9d6d744de350)
+
+---
+
+![Query Screenshot 1](https://github.com/user-attachments/assets/1d123ff4-0b2d-4487-8b27-fb031ea483bc)
+
+---
+
+![Query Screenshot 2](https://github.com/user-attachments/assets/1133c0a8-9c42-489d-9b69-8a7fdc0eac3f)
+
+---
+
+<img width="1920" height="1200" alt="Screenshot 2025-11-15 164437" src="https://github.com/user-attachments/assets/1133c0a8-9c42-489d-9b69-8a7fdc0eac3f" />
 
 
-<img width="940" height="470" alt="image" src="https://github.com/user-attachments/assets/2159e25f-22d5-42c6-a622-3f741adeeae1" />
-
-
-<img width="926" height="469" alt="image" src="https://github.com/user-attachments/assets/c3fdb240-8a15-482a-83c2-48b18e96a708" />
+--
 
 
 ## Results
