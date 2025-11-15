@@ -43,17 +43,17 @@ The dataset is used here **solely for educational, analytical, and non-commercia
 - Use AI2SQL prompts to generate SQL for trend/pattern analysis in the cleaned data and Apply sequential cleaning queries in AI2SQL (each adapted for robust PostgreSQL syntax). 
 
 
-<img width="818" height="407" alt="image" src="https://github.com/user-attachments/assets/ea18d787-a3f1-459a-b42f-3b18729036c0" />
+![Screenshot Name](https://github.com/user-attachments/assets/2e590789-9dfa-41d5-9d25-9af1349e178c)
 
 
 ---
 
-<img width="925" height="501" alt="image" src="https://github.com/user-attachments/assets/ed2ab65e-9e83-497a-be37-6ee1f98186f3" />
+![Screenshot Name](https://github.com/user-attachments/assets/ed2ab65e-9e83-497a-be37-6ee1f98186f3)
 
 
 ---
 
-<img width="932" height="473" alt="image" src="https://github.com/user-attachments/assets/909f582b-e657-433c-a1b0-834bcc36baf6" />
+![Query Screenshot](https://github.com/user-attachments/assets/909f582b-e657-433c-a1b0-834bcc36baf6)
 
 
 ---
