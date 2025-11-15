@@ -209,3 +209,7 @@ SET "Name" = INITCAP(TRIM("Name")),
 - Screenshots provide a visual walkthrough of the transformation steps and final analytical outputs.
 
 ---
+
+## 🪄 Connect with Me
+- 💼 [LinkedIn](https://www.linkedin.
+
