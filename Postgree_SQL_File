@@ -1,0 +1,70 @@
+SELECT column_name FROM information_schema.columns WHERE table_name = 'healthcare_data';
+Here are your 6 steps:
+Step 1: Remove rows with nulls or empty required fields
+sql
+DELETE FROM healthcare_data
+WHERE  TRIM(COALESCE("Name", '')) = '' OR
+       "Age" IS NULL OR
+       TRIM(COALESCE("Gender", '')) = '' OR
+       TRIM(COALESCE("Blood Type", '')) = '' OR
+       TRIM(COALESCE("Medical Condition", '')) = '' OR
+       TRIM(COALESCE("Hospital", '')) = '' OR
+       TRIM(COALESCE("Insurance Provider", '')) = '' OR
+       "Billing Amount" IS NULL OR
+       TRIM(COALESCE("Room Number", '')) = '' OR
+       TRIM(COALESCE("Admission Type", '')) = '' OR
+       "Date of Admission" IS NULL OR
+       "Discharge Date" IS NULL OR
+       TRIM(COALESCE("Medication", '')) = '' OR
+       TRIM(COALESCE("Test Results", '')) = '';
+Step 2: Remove exact duplicate rows (all columns must match)
+sql
+DELETE FROM healthcare_data a
+USING healthcare_data b
+WHERE a.ctid < b.ctid
+  AND COALESCE(a."Name", '') = COALESCE(b."Name", '')
+  AND COALESCE(a."Age"::text, '') = COALESCE(b."Age"::text, '')
+  AND COALESCE(a."Gender", '') = COALESCE(b."Gender", '')
+  AND COALESCE(a."Blood Type", '') = COALESCE(b."Blood Type", '')
+  AND COALESCE(a."Medical Condition", '') = COALESCE(b."Medical Condition", '')
+  AND COALESCE(a."Hospital", '') = COALESCE(b."Hospital", '')
+  AND COALESCE(a."Insurance Provider", '') = COALESCE(b."Insurance Provider", '')
+  AND COALESCE(a."Billing Amount"::text, '') = COALESCE(b."Billing Amount"::text, '')
+  AND COALESCE(a."Room Number", '') = COALESCE(b."Room Number", '')
+  AND COALESCE(a."Admission Type", '') = COALESCE(b."Admission Type", '')
+  AND COALESCE(a."Date of Admission"::text, '') = COALESCE(b."Date of Admission"::text, '')
+  AND COALESCE(a."Discharge Date"::text, '') = COALESCE(b."Discharge Date"::text, '')
+  AND COALESCE(a."Medication", '') = COALESCE(b."Medication", '')
+  AND COALESCE(a."Test Results", '') = COALESCE(b."Test Results", '');
+Step 3: Remove outlier ages and date logic errors
+sql
+DELETE FROM healthcare_data
+WHERE "Age" < 0 OR "Age" > 120
+   OR ("Billing Amount" IS NOT NULL AND "Billing Amount" <= 0)
+   OR "Date of Admission" > "Discharge Date";
+Step 4: Standardize and validate Gender
+sql
+UPDATE healthcare_data SET "Gender" =
+  CASE
+    WHEN LOWER(TRIM("Gender")) IN ('male','m') THEN 'Male'
+    WHEN LOWER(TRIM("Gender")) IN ('female','f') THEN 'Female'
+    ELSE 'Other'
+  END
+WHERE "Gender" IS NOT NULL;
+Step 5: Normalize Blood Type
+sql
+UPDATE healthcare_data SET "Blood Type" = UPPER(REPLACE(TRIM("Blood Type"), ' ', ''))
+WHERE "Blood Type" IS NOT NULL;
+
+UPDATE healthcare_data SET "Blood Type" = NULL
+WHERE "Blood Type" NOT IN ('A+','A-','B+','B-','AB+','AB-','O+','O-') OR "Blood Type" IS NULL;
+Step 6: Standardize text columns to title case
+sql
+UPDATE healthcare_data SET 
+  "Name" = INITCAP(TRIM("Name")),
+  "Medical Condition" = INITCAP(TRIM("Medical Condition")),
+  "Hospital" = INITCAP(TRIM("Hospital")),
+  "Insurance Provider" = INITCAP(TRIM("Insurance Provider")),
+  "Admission Type" = INITCAP(TRIM("Admission Type")),
+  "Medication" = INITCAP(TRIM("Medication")),
+  "Test Results" = INITCAP(TRIM("Test Results"));
