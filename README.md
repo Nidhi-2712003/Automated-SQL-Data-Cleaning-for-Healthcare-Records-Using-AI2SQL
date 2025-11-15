@@ -216,3 +216,6 @@ SET "Name" = INITCAP(TRIM("Name")),
 - 📧 Email: domarajunidhi@gmail.com
 
 ---
+
+> © 2025 Nidhi Sree. This project is for educational and professional portfolio purposes. All examples use mock or publicly available data.
+
